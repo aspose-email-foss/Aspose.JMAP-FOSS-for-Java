@@ -184,15 +184,13 @@ The protocol/API reference is generated from the same specifications that drive 
     timezone-conversion bugs.
 - Unit tests run against a fake `JmapTransport` with mocked responses — no live JMAP server is
   required. A Docker-based live-server integration suite (Stalwart Mail Server) lives in
-  [`infra/integration/`](../../infra/integration/README.md).
+  a separate Docker-based live-server suite used during release validation.
 
 ## Development and Testing
 
-This project's own tooling never assumes a JDK or Maven is installed on your machine: both the
-codegen pipeline's validator
-(`agent/src/jmap_codegen_agent/validators/java_validator.py`) and the commands below run
-everything inside a throwaway `maven:3.9-eclipse-temurin-17` Docker container. Requires only
-Docker.
+The Docker commands below run everything inside a throwaway
+`maven:3.9-eclipse-temurin-17` container. They require only Docker, not a host JDK or Maven
+installation.
 
 ```bash
 git clone https://github.com/aspose-email-foss/Aspose.JMAP-FOSS-for-Java.git
@@ -203,10 +201,7 @@ docker run --rm -v "$PWD:/workspace" -w /workspace maven:3.9-eclipse-temurin-17 
 
 (On Windows PowerShell, replace `$PWD` with `${PWD}`; on cmd.exe, use `%cd%`.) The first run
 downloads Maven Central dependencies into the container and discards them on exit unless you also
-mount a volume for `~/.m2` (`-v aspose-jmap-foss-java-m2:/root/.m2`) to cache them across runs —
-see [`infra/integration/README.md`](../../infra/integration/README.md) for the same pattern
-applied to the live-server integration tests, and [`agent/docs/runbook.md`](../../agent/docs/runbook.md)
-for the full command reference.
+mount a volume for `~/.m2` (`-v aspose-jmap-foss-java-m2:/root/.m2`) to cache them across runs.
 
 If you do have a local JDK 17+ and Maven installed, `mvn compile` / `mvn test` work the same way
 without Docker — the Docker-only constraint is this project's convention for keeping the
