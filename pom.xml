@@ -1,0 +1,136 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <groupId>com.aspose</groupId>
+  <artifactId>aspose-jmap-foss</artifactId>
+  <version>0.1.0</version>
+  <packaging>jar</packaging>
+
+  <name>aspose-jmap-foss</name>
+  <description>Open-source JMAP (RFC 8620 Core / RFC 8621 Mail + EmailSubmission) client library with an Aspose.Email-style API.</description>
+  <url>https://github.com/aspose-email-foss/Aspose.JMAP-FOSS-for-Java</url>
+
+  <organization>
+    <name>Aspose</name>
+    <url>https://www.aspose.com</url>
+  </organization>
+
+  <scm>
+    <connection>scm:git:https://github.com/aspose-email-foss/Aspose.JMAP-FOSS-for-Java.git</connection>
+    <developerConnection>scm:git:https://github.com/aspose-email-foss/Aspose.JMAP-FOSS-for-Java.git</developerConnection>
+    <url>https://github.com/aspose-email-foss/Aspose.JMAP-FOSS-for-Java</url>
+  </scm>
+
+  <developers>
+    <developer>
+      <id>aspose</id>
+      <name>Aspose</name>
+      <email>jmap@aspose.com</email>
+      <organization>Aspose</organization>
+      <organizationUrl>https://www.aspose.com</organizationUrl>
+    </developer>
+  </developers>
+
+  <properties>
+    <maven.compiler.release>17</maven.compiler.release>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+  </properties>
+
+  <licenses>
+    <license>
+      <name>MIT</name>
+      <url>https://opensource.org/licenses/MIT</url>
+    </license>
+  </licenses>
+
+  <dependencies>
+    <dependency>
+      <groupId>com.fasterxml.jackson.core</groupId>
+      <artifactId>jackson-databind</artifactId>
+      <version>2.17.2</version>
+    </dependency>
+    <dependency>
+      <groupId>org.junit.jupiter</groupId>
+      <artifactId>junit-jupiter</artifactId>
+      <version>5.10.3</version>
+      <scope>test</scope>
+    </dependency>
+  </dependencies>
+
+  <build>
+    <plugins>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-compiler-plugin</artifactId>
+        <version>3.13.0</version>
+      </plugin>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-surefire-plugin</artifactId>
+        <version>3.3.1</version>
+      </plugin>
+    </plugins>
+  </build>
+
+  <profiles>
+    <!-- `mvn -Prelease deploy` publishes to Maven Central. Requires:
+         - OSSRH_USERNAME / OSSRH_PASSWORD (Central portal token) in settings.xml
+           server id `central`
+         - MAVEN_GPG_PRIVATE_KEY / MAVEN_GPG_PASSPHRASE for detached signatures
+         Wired into .github/workflows/release.yml and the .gitlab-ci.yml release stage
+         but inert until those are configured. -->
+    <profile>
+      <id>release</id>
+      <build>
+        <plugins>
+          <plugin>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-source-plugin</artifactId>
+            <version>3.3.1</version>
+            <executions>
+              <execution>
+                <id>attach-sources</id>
+                <goals><goal>jar-no-fork</goal></goals>
+              </execution>
+            </executions>
+          </plugin>
+          <plugin>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-javadoc-plugin</artifactId>
+            <version>3.8.0</version>
+            <executions>
+              <execution>
+                <id>attach-javadocs</id>
+                <goals><goal>jar</goal></goals>
+              </execution>
+            </executions>
+          </plugin>
+          <plugin>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-gpg-plugin</artifactId>
+            <version>3.2.4</version>
+            <executions>
+              <execution>
+                <id>sign-artifacts</id>
+                <phase>verify</phase>
+                <goals><goal>sign</goal></goals>
+              </execution>
+            </executions>
+          </plugin>
+          <plugin>
+            <groupId>org.sonatype.central</groupId>
+            <artifactId>central-publishing-maven-plugin</artifactId>
+            <version>0.5.0</version>
+            <extensions>true</extensions>
+            <configuration>
+              <publishingServerId>central</publishingServerId>
+              <autoPublish>false</autoPublish>
+            </configuration>
+          </plugin>
+        </plugins>
+      </build>
+    </profile>
+  </profiles>
+</project>
