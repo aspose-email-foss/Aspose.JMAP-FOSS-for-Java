@@ -1,8 +1,6 @@
 # Aspose.JMAP FOSS for Java
 
-[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE) [![Maven Central](https://img.shields.io/maven-central/v/com.aspose/aspose-jmap-foss.svg)](https://central.sonatype.com/artifact/com.aspose/aspose-jmap-foss) [![Contributors](https://img.shields.io/github/contributors/aspose-email-foss/Aspose.JMAP-FOSS-for-Java.svg)](https://github.com/aspose-email-foss/Aspose.JMAP-FOSS-for-Java/graphs/contributors)
-
-[![Aspose.JMAP FOSS for Java](https://products.aspose.org/media/jmap/java/banner-readme.png)](https://products.aspose.org/jmap/java/)
+[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE) [![Contributors](https://img.shields.io/github/contributors/aspose-email-foss/Aspose.JMAP-FOSS-for-Java.svg)](https://github.com/aspose-email-foss/Aspose.JMAP-FOSS-for-Java/graphs/contributors)
 
 Aspose.JMAP FOSS for Java is a free, open source JMAP client library for Java 17 — for talking
 to a [JMAP](https://jmap.io) mail server over HTTP:
@@ -169,16 +167,10 @@ for `sendRequest`. Errors surface as `JmapNetworkException` (transport) and
 `JmapProtocolException` (a JMAP method-level error); per-item `Set` failures are returned as
 data on the result rather than thrown.
 
-The full protocol/API reference, rendered from the same specs that drive generation, is
-[`docs/api-reference.md`](../../docs/api-reference.md) at the repository root.
+The protocol/API reference is generated from the same specifications that drive this library.
 
 ## Documentation & Resources
 
-- **[Getting started guide](https://docs.aspose.org/jmap/java/)** — installation and walkthroughs.
-- **[API reference](https://reference.aspose.org/jmap/java/)** — browsable reference for the public types.
-- **[How-to guides & FAQ](https://kb.aspose.org/jmap/java/)** — task-focused answers.
-- **[Protocol/API reference](../../docs/api-reference.md)** — the in-repo reference rendered from the specs.
-- **[Changelog](../../CHANGELOG.md)**, **[Contributing guide](../../CONTRIBUTING.md)**, **[Security policy](../../SECURITY.md)**.
 - Found a bug or have a feature request? [Open an issue](https://github.com/aspose-email-foss/Aspose.JMAP-FOSS-for-Java/issues) on GitHub.
 
 ## Scope and Limitations
